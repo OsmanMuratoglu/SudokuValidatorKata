@@ -263,6 +263,21 @@ class MissingLetterTests {
         )
         assertEquals(false, validate(board))
     }
+    @Test
+    fun `invalid sudoku 3`() {
+        val board = arrayOf(
+            arrayOf(1, 2, 3, 1, 2, 3, 1, 2, 3),
+            arrayOf(4, 5, 6, 4, 5, 6, 4, 5, 6),
+            arrayOf(7, 8, 9, 7, 8, 9, 7, 8, 9),
+            arrayOf(2, 3, 1, 2, 3, 1, 2, 3, 1),
+            arrayOf(5, 6, 4, 5, 6, 4, 5, 6, 4),
+            arrayOf(8, 9, 7, 8, 9, 7, 8, 9, 7),
+            arrayOf(3, 1, 2, 3, 1, 2, 3, 1, 2),
+            arrayOf(6, 4, 5, 6, 4, 5, 6, 4, 5),
+            arrayOf(9, 7, 8, 9, 7, 8, 9, 7, 8)
+        )
+        assertEquals(false, validate(board))
+    }
     /*
 
 
@@ -288,21 +303,7 @@ class MissingLetterTests {
 
 
 
-        @Test
-        fun `invalid sudoku 3`() {
-            val board = arrayOf(
-                arrayOf(1, 2, 3, 1, 2, 3, 1, 2, 3),
-                arrayOf(4, 5, 6, 4, 5, 6, 4, 5, 6),
-                arrayOf(7, 8, 9, 7, 8, 9, 7, 8, 9),
-                arrayOf(2, 3, 1, 2, 3, 1, 2, 3, 1),
-                arrayOf(5, 6, 4, 5, 6, 4, 5, 6, 4),
-                arrayOf(8, 9, 7, 8, 9, 7, 8, 9, 7),
-                arrayOf(3, 1, 2, 3, 1, 2, 3, 1, 2),
-                arrayOf(6, 4, 5, 6, 4, 5, 6, 4, 5),
-                arrayOf(9, 7, 8, 9, 7, 8, 9, 7, 8)
-            )
-            assertEquals(false, validate(board))
-        }
+
 
         @Test
         fun `invalid because of repeated columns`() {
