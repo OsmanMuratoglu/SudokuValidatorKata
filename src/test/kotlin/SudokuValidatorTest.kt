@@ -49,11 +49,7 @@ class MissingLetterTests {
         )
         assertEquals(false, validate(board))
     }
-
-    /*
-
-
- @Test
+    @Test
     fun `all columns are 1 - 9`() {
         val board = arrayOf(
             arrayOf(1, 1, 1, 1, 1, 1, 1, 1, 1),
@@ -68,6 +64,11 @@ class MissingLetterTests {
         )
         assertEquals(false, validate(board))
     }
+
+    /*
+
+
+
 
 
 
