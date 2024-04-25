@@ -1,5 +1,4 @@
 fun validate(board: Array<Array<Int>>) : Boolean
 {
-
-    return true
+    return board.groupBy{it}.count() == 1
 }
