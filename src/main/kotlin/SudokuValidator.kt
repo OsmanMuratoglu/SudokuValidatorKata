@@ -1,5 +1,3 @@
-import java.util.*
-
 fun validate(board: Array<Array<Int>>): Boolean {
     board.forEach {
         if (!it.sortedArray().contentDeepEquals(arrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9))) {
@@ -13,7 +11,7 @@ fun validate(board: Array<Array<Int>>): Boolean {
         }
     }
 
-    return usingBoxes(board)
+    return hasValidBoxes(board)
 }
 
 fun transposeMatrix(board: Array<Array<Int>>): Array<Array<Int>> {
@@ -73,26 +71,27 @@ fun checkGroups3(board: Array<Array<Int>>): Boolean {
 }
 */
 
-fun usingBoxes(board: Array<Array<Int>>): Boolean {
+fun hasValidBoxes(board: Array<Array<Int>>): Boolean {
     var sum = 0
-    for(i in 0..<8){
-            for(j in 0..<3){
-                for(k in 0..<3){
-                    println(board[findBox(i)[0]+j][findBox(i)[1]+k])
-                    sum += board[findBox(i)[0]+j][findBox(i)[1]+k]
-                }
+    for (i in 0..<8) {
+        for (j in 0..<3) {
+            for (k in 0..<3) {
+                println(board[findBoxWithId(i)[0] + j][findBoxWithId(i)[1] + k])
+                sum += board[findBoxWithId(i)[0] + j][findBoxWithId(i)[1] + k]
             }
-        if(sum != 45){
+        }
+        if (sum != 45) {
             return false
-        }else{
+        } else {
             sum = 0
         }
     }
     return true
 }
 
+
 // id = anfangskoordinate von box
-fun findBox(id: Int): Array<Int> {
+fun findBoxWithId(id: Int): Array<Int> {
     return arrayOf((id) / 3 * 3, (id) % 3 * 3)
 }
 
