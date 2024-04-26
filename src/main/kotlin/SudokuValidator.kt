@@ -1,7 +1,4 @@
-fun validate2(board: Array<Array<Int>>): Boolean {
-    return board[0].size == board[0].distinct().size && board[0][0] != board[1][0]
-            && !board[0].contains(0) && board[5][7] != board[8][7] && board[0][1] != board[1][0]
-}
+import java.util.*
 
 fun validate(board: Array<Array<Int>>): Boolean {
     board.forEach {
@@ -16,18 +13,20 @@ fun validate(board: Array<Array<Int>>): Boolean {
         }
     }
 
-    return checkGroups(board)
-
+    return usingBoxes(board)
 }
 
 fun transposeMatrix(board: Array<Array<Int>>): Array<Array<Int>> {
     return Array(board[0].size) { j -> Array(board.size) { i -> board[i][j] } }
 }
 
+/*
 fun checkGroups(board: Array<Array<Int>>): Boolean {
     return checkGroups1(board) && checkGroups2(board) && checkGroups3(board)
 }
+*/
 
+/*
 fun checkGroups1(board: Array<Array<Int>>): Boolean {
     var sum = 0
 
@@ -71,5 +70,29 @@ fun checkGroups3(board: Array<Array<Int>>): Boolean {
     }
 
     return true
+}
+*/
+
+fun usingBoxes(board: Array<Array<Int>>): Boolean {
+    var sum = 0
+    for(i in 0..<8){
+            for(j in 0..<3){
+                for(k in 0..<3){
+                    println(board[findBox(i)[0]+j][findBox(i)[1]+k])
+                    sum += board[findBox(i)[0]+j][findBox(i)[1]+k]
+                }
+            }
+        if(sum != 45){
+            return false
+        }else{
+            sum = 0
+        }
+    }
+    return true
+}
+
+// id = anfangskoordinate von box
+fun findBox(id: Int): Array<Int> {
+    return arrayOf((id) / 3 * 3, (id) % 3 * 3)
 }
 
